@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" conetent="ie=edge">
+        <title>Angular</title>
+        <link rel="stylesheet" href="">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <!--<div ng-app="">
+        <p>Name: <input type="text" ng-model="name"></p>
+        <h1>Hello {{name}}</h1>
+        </div>-->
+
+        <!--<div ng-app="" ng-init="firstName='John'">
+            <p>Name: <input type="text" ng-model="name2"></p>
+            <p>The name is <span ng-bind="firstName"></span></p>
+            <p ng-bind="name2"></p>
+            <div>
+                <p>
+                    My first expression {{5 + 5}}
+                </p>
+            </div>
+            <div>
+                <p>Name: <input type="text" ng-model="name3"></p>
+                <p>{{name3}}</p>
+            </div>
+        </div>-->
+
+        <div ng-app="myApp" ng-controller="myCtrl">
+            
+            First name: <input type="text" ng-model="firstName"><br>
+            Last Name: <input type="text" ng-model="lastName"><br>
+            <br>
+            Full Name: {{firstName + " " + lastName}}
+
+        </div>
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope) {
+                $scope.firstName = "John";
+                $scope.lastName = "Doe";
+            });
+        </script>
+
+    </body>
+</html>
