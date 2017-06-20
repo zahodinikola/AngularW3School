@@ -5,15 +5,16 @@
         <meta http-equiv="X-UA-Compatible" conetent="ie=edge">
         <title>Angular</title>
         <link rel="stylesheet" href="">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        
     </head>
     <body>
         <!--<div ng-app="">
         <p>Name: <input type="text" ng-model="name"></p>
         <h1>Hello {{name}}</h1>
-        </div>-->
-
-        <!--<div ng-app="" ng-init="firstName='John'">
+        </div>
+==============================================
+        
+            <div ng-app="" ng-init="firstName='John'">
             <p>Name: <input type="text" ng-model="name2"></p>
             <p>The name is <span ng-bind="firstName"></span></p>
             <p ng-bind="name2"></p>
@@ -26,9 +27,18 @@
                 <p>Name: <input type="text" ng-model="name3"></p>
                 <p>{{name3}}</p>
             </div>
-        </div>-->
+        </div> 
+        
+ =================================================== 
+        <div ng-app="myApp" ng-controller="myCtrl" ng-init="myCol='lightblue'; quantity = 1; cost = 4">
+            <input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}">
 
-        <div ng-app="myApp" ng-controller="myCtrl">
+            <p>
+                total in dollar: {{ quantity * cost}}
+            </p>
+            <p>
+                total in dollars: <span ng-bind="quantity * cost"></span>
+            </p>
             
             First name: <input type="text" ng-model="firstName"><br>
             Last Name: <input type="text" ng-model="lastName"><br>
@@ -43,6 +53,87 @@
                 $scope.lastName = "Doe";
             });
         </script>
+============================================-->
+    <!--<div ng-app="" ng-init="points=[3, 4, 66, 1]; person={firstName: 'John', lastName: 'Doe'}">
+        <p>The name is {{person.firstName + " " + person.lastName}}</p>
+        
+        <p>The name is <span ng-bind="person.firstName + ' ' + person.lastName"></span></p>
+        
+        <p>
+            The third result is {{points[2]}}
+        </p>
+        <p>The third result is -> <span ng-bind="points[2]"></span></p>
+    </div>
+=============================================== -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        
+        <style>
+            input.ng-invalid {
+                background-color: red;
+            }
+        </style>
+        <form name="anotherForm">
+            <input type="email" name="myAdress" ng-model="myText" required>
+            <h1>Status</h1>
+            {{anotherForm.myAdress.$valid}}
+            {{anotherForm.myAdress.$dirty}}
+            {{anotherForm.myAdress.$touched}}
+        </form>
+        <form name="myForm">
+            Email: <input type="email" name="myEmail" ng-model="text">
+            <span ng-show="myForm.myEmail.$error.email">invalid email</span>
+            <p>{{myForm.myEmail.$validationMessage}}</p>
+        </form>
+        
+        Name: <input type="text" ng-model="namie">
+        <p>You entered: {{namie}}</p>
+        <p w3-test-directive>
+            
+        </p>
+        <new-directive>1</new-directive>
+        <p new-directive>2</p>
+        <p class="new-directive">3</p>
+        <!-- directive: new-directive -->
+        <p restricted></p>
+        <p>
+            {{firstName + " " + lastName}}
+        </p>
+        <div ng-init="name='john'">
+            <input type="text" ng-model="name">
+            <p>
+                {{name}}
+            </p>
+        </div>
+        <div ng-init="amount='5'; price='66'">
+            <input type="text" ng-model="amount">
+            <input type="text" ng-model="price">
+            Total cost is: {{amount * price}}$
+        </div>
+        <div ng-init="names=['Jane', 'Janin', 'Jade']">
+            <ul ng-repeat="item in names">
+                <li>{{item}}</li>
+            </ul>
+        </div>
+        <div ng-init="names=[
+        {name:'Jane',country:'Sweden'},
+        {name:'John',country:'Urugwai'},
+        {name:'Judith',country:'USA'}]">
+            <ul ng-repeat="item in names">
+                <li>{{item.name + ", " + item.country}}</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+             
+        
 
+
+    </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="./js/myApp.js"></script>
+    <script src="./js/controllers/myCtrl.js"></script>
+    <script src="./js/directives/myDrctv.js"></script>
+    
     </body>
 </html>
