@@ -2,18 +2,53 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" conetent="ie=edge">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Angular</title>
         <link rel="stylesheet" href="">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     </head>
-    <body>
-		
-		<div ng-app="newApp" ng-controller="newCtrl">
-			
-			{{myUrl}}
-			
-			{{feedback}}
+    <body ng-app="tryService" ng-controller="environment">
+
+        <div id="urlFieldSet">
+            <div id="urlEntry">
+                    Input URL: <input type="text" name="url" ng-model="url">
+                    <input type="button" ng-click="getData()" value="get data">
+                    <p>{{data}}</p>
+            </div>
+        </div>
+        <div>
+            <input type="button" ng-click="append()" value="append">
+            <input type="button" ng-click="delete()" value="delete">
+        </div>
+
+        
+
+
+        <script>
+            
+            var app = angular.module('tryService', []);
+            app.controller('environment', function($scope, $http) {
+                $scope.url = "byby.html";
+                $scope.getData = function() {
+                    $http.get($scope.url).then(function(response) {
+                    $scope.data = response.data;
+                });
+                };
+                $scope.append = function() {
+                    var div = urlEntry.cloneNode(true);
+                    urlFieldSet.appendChild(div);
+                };
+            });
+            
+        </script>
+
+	</body>
+</html>	
+		<!--<div ng-app="newApp" ng-controller="newCtrl">
+			-->
+			<!--{{myUrl}}
+			<br />
+			<h1>{{feedback}}</h1>
 			
 			<br />
 			
@@ -105,7 +140,7 @@
 				}
 				return txt;
 				}});
-		</script>
+		</script>-->
 		
 		<!-- <div>
 			<p>
@@ -144,7 +179,7 @@
 		
 		<!-- <div ng-app="myApp" ng-controller="myCtrl">
 		
-			<!-- Input your name: <input id="input" type="text" value="asd" name="myName" ng-model="myName"> -->
+			<!- Input your name: <input id="input" type="text" value="asd" name="myName" ng-model="myName"> -->
 			<!-- <p>My name is {{myName}}</p> -->
 			<!-- <ul ng-repeat="x in names"> -->
 				<!-- <li>{{x}}</li> -->
@@ -297,7 +332,7 @@
         <new-directive>1</new-directive>
         <p new-directive>2</p>
         <p class="new-directive">3</p>
-        <!-- directive: new-directive -->
+        <!- directive: new-directive -->
         <!--
 		<p restricted></p>
         <p>
@@ -340,5 +375,3 @@
     <script src="./js/controllers/myCtrl.js"></script>
     <script src="./js/directives/myDrctv.js"></script>
     -->
-    </body>
-</html>
