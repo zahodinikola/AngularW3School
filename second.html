@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Angular</title>
+        <link rel="stylesheet" href="">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body ng-app="tryService" ng-controller="environment">
+
+        <div id="urlFieldSet">
+            <div id="urlEntry">
+                    Input URL: <input type="text" name="url" ng-model="url">
+                    <input type="button" ng-click="getData()" value="get data">
+                    <p>{{data}}</p>
+            </div>
+        </div>
+        <div>
+            <input type="button" value="append">
+            <input type="button" value="delete">
+        </div>
+
+        
+
+
+        <script>
+            
+            var app = angular.module('tryService', []);
+            app.controller('environment', function($scope, $http) {
+                $scope.url = "byby.html";
+                $scope.getData = function() {
+                    $http.get($scope.url).then(function(response) {
+                    $scope.data = response.data;
+                });
+                };
+                
+            });
+            
+        </script>
+
+	</body>
+</html>
