@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <h1>AngularJS introduction</h1>
+        <br>
+        <h2>AngularJS extends HTML</h2>
+        <br>
+        <!-- <div ng-app="">
+            <p><input type="text" ng-model="name"></p>
+            <p ng-bind="name"></p>
+        </div> -->
+        <br>
+        <h2>AngularJS Directives</h2>
+        <br>
+        <!-- <div ng-app="" ng-init="name='Willy Wonk'">
+            <p>Hello, <span ng-bind="name"></span></p>
+        </div> -->
+        <h2>You can use <code>data-ng-*</code> instead of <code>ng-*</code> to make page HTML valid</h2>
+        <br>
+        <h2>AngularJS expressions</h2>
+        <!-- <div ng-app="" ng-init="myName='Alfred'">
+            <p ng-bind="myName"></p>
+            <p>4 + 4 = {{4+4}}</p>
+        </div> -->
+        <br>
+        <h2>AngularJS applications</h2>
+        <br>
+        <div ng-app="myApp" ng-controller="myCtrl">
+        
+            <p>Name: <input type="text" ng-model="firstName"></p>
+            <p>Last name: <input type="text" ng-model="lastName"></p>
+            <p>Full name: {{firstName + " " + lastName}}</p>
+        
+        </div>
+        <script>
+            
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope) {
+                $scope.firstName = "John";
+                $scope.lastName = "Doe";
+            });
+
+        </script>
+
+    </div>
+</body>
+</html>
