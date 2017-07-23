@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <!--AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>AngularJS modules</h2>
+        <br>
+        <p>An AngularJS module defines an application</p>
+        <p>The module is a container for the different parts of an application</p>
+        <p>The module is a container for the application controllers</p>
+        <p>Controllers always belong to a module</p>
+        <br>
+        <h2>Creating a module</h2>
+        <br>
+        <p>A module is created by using AngularJS function <code>angular.module</code></p>
+        <p>The "myApp" parameter refers to an HTML element in which the application will run</p>
+        <br>
+        <h2>Adding a controller</h2>
+        <p>Refer to the controller of your application through the <code>ng-controller</code> directive</p>
+        <br>
+        <!-- <div ng-app="myApp" ng-controller="myCtrl">
+            {{firstName + " " + lastName}}
+        </div>
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope) {
+                $scope.firstName = 'Klara';
+                $scope.lastName = 'Cetkin';
+            });
+        </script> -->
+        <br>
+        <h2>Adding a directive</h2>
+        <br>
+        <div ng-app="myApp" w3-test-directive>
+  
+        </div>
+        <script>
+            var app = angular.module('myApp', []);
+            app.directive('W3TestDirective', function() {
+                return {
+                    template: "I was made in a dirctive constructor"
+                };
+            });
+        </script>
+    </div>
+</body>
+</html>
