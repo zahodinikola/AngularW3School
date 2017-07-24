@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <!--AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>AngularJS directives</h2>
+		<br>
+		<p>AngularJS lets extend HTML with new attributes called Directives</p>
+		<p>AngularJS has a set of built in directives wich offers functionality to your applications.</p>
+		<p>AngularJS also lets you define your own directives</p>
+		<p>AngularJS directives are extended HTML attribute with a prefix <code>ng-</code></p>
+		<p>The <code>ng-app</code> directive initializes AngularJS application</p>
+		<p>The <code>ng-init</code> directive initializes application data</p>
+		<p>The <code>ng-model</code> directive binds the value of HTML controls (input, textarea, select) to application data</p>
+		<br>
+		<!--<div ng-app="" ng-init="firstName='Benny'">
+			<p>The name is {{firstName}}</p>
+		</div>-->
+		<br>
+		<p>The <code>ng-app</code> directive also tells AngularJS that the <code>&lt;div&gt;</code> element is owner of the AngularJS application</p>
+		<br>
+		<h2>Data binding</h2>
+		<br>
+		<p>The <code>{{firstName}}</code> expression is an AngularJS data binding expression</p>
+		<p><code>{{firstName}}</code> is bound with <code>ng-model="firstName"</code>
+		<!--<div ng-app="" ng-init="quantity=3, cost=34">
+			<p>Input quantity: <input type="number" ng-model="quantity"></p>
+			<p>Input cost: <input type="number" ng-model="cost"></p>
+			<p>Total price is: {{quantity * cost}}</p>
+		</div>-->
+		<br>
+		<h2>Repeating HTML elements</h2>
+		<br>
+		<!--<div ng-app="" ng-init="names = ['Kory', 'Lenny', 'Leila', 'Barbara']">
+			<ul>
+				<li ng-repeat="item in names">
+				{{item}}
+				</li>
+			</ul>
+		</div>-->
+		<br>
+		<p> The <code>ng-repeat</code> directive actually clones HTML elements once for each item in a collection</p>
+		<p>The <code>ng-repeat</code> directive can be used on an array of objects</p>
+		<!--<div ng-app="" ng-init="names = [
+		{name: 'Jane', country: 'Norway'},
+		{name: 'Gorge', country: 'Georgia'},
+		{name: 'Vanessa', country: 'France'}]">
+			<ul>
+				<li ng-repeat="item in names">
+					{{item.country}}
+				</li>
+			</ul>
+		</div>-->
+		<div class="jumbotron">
+			<p>AngularJS is perfect for database CRUD (create, read, update, delete) applications</p>
+		</div>
+		<br>
+		<h2>The <code>ng-app</code> directive</h2>
+		<br>
+		<p>The <code>ng-app</code> element defines the <strong>root element</strong> for an AngularJS application</p>
+		<p>The <code>ng-app</code> directive will auto-bootstrap (automatically initialize) the application when a web page is loaded</p>
+		<br>
+		<h2>The <code>ng-init</code> directive</h2>
+		<p>The <code>ng-init</code> ditective defines initial values for an AngularJS application</p>
+		<br>
+		<h2>The <code>ng-model</code> directive</h2>
+		<p>The <code>ng-model</code> directive binds the value of HTML controls (input, textarea, select) to application data</p>
+		<p>The <code>ng-model</code> directive can also:</p>
+		<ul>
+			<li><p>Provide type validation for application data (number, email, required)</p></li>
+			<li><p>Provide status for application data (invalid, dirty, error, touched)</p></li>
+			<li><p>Provide CSS classes for HTML elements</p></li>
+			<li><p>Bind HTML elements to HTML forms</p></li>
+		</ul>
+		<br>
+		<h2>Create new directives</h2>
+		<br>
+		<p>You can invoke directive by using</p>
+		<ul>
+			<li><p>Element name</p></li>
+			<li><p>Attribute</p></li>
+			<li><p>Class</p></li>
+			<li><p>Comment</p></li>
+		</ul>
+		<h4>Restrictions</h4>
+		<ul>
+			<li><p><code>E</code> for elements</p></li>
+			<li><p><code>A</code> for attributes</p></li>
+			<li><p><code>C</code> for classes</p></li>
+			<li><p><code>M</code> for comments</p></li>
+		</ul>
+		<p>By default the value is "EA"</p>
+		<p>Without <code>replace</code> property the comment directive will be invisible</p>
+		<div ng-app="myApp">
+			<test-directive></test-directive>
+			<div test-directive></div>
+			<div class="test-directive"></div>
+			<!-- directive: test-directive -->
+		</div>
+		<script>
+			angular.module('myApp',[]).
+				directive('testDirective', function() {
+					return {
+						restrict: "EACM",
+						replace: true,
+						template: "<h1>Made by directive</h1>"
+					};
+				});
+		</script>
+		
+    </div>
+</body>
+</html>

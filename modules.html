@@ -42,17 +42,29 @@
         <br>
         <h2>Adding a directive</h2>
         <br>
-        <div ng-app="myApp" w3-test-directive>
+        <!--<div ng-app="myApp" test-directive>
   
         </div>
         <script>
             var app = angular.module('myApp', []);
-            app.directive('W3TestDirective', function() {
+            app.directive('testDirective', function() {
                 return {
                     template: "I was made in a dirctive constructor"
                 };
             });
-        </script>
+        </script>-->
+		<br>
+		<h2>Modules and controllers in files</h2>
+		<br>
+		<div ng-app="myApp1" ng-controller="myCtrl1">
+		
+			<p>{{ firstName + " " + lastName }}</p>
+		
+		</div>
+		
+		<script src="./js/myApp1.js"></script>
+		<script src="./js/controllers/myCtrl1.js"></script>
+		
     </div>
 </body>
 </html>
