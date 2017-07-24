@@ -14,7 +14,62 @@
     </head>
     <body>
         <div class="container">
-
+            <h2>AngularJS controllers</h2>
+            <p>AngularJS controllers <strong>control the data</strong> of AngularJS applications</p>
+            <p>AngulaeJS controllers are regular <strong>JavaScript Objects</strong></p>
+            <h3>AngularJS controllers</h3>
+            <br>
+            <p>AngularJS applications are controlled by controllers</p>
+            <p>The <code>ng-controller</code> directive defines the application controller</p>
+            <p>A controller is a <strong>JavaScript Object</strong> created by a standart JavaScript <strong>object constructor</strong></p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>Input name: <input type="text" ng-model="firstName"></p>
+                <p>Input last name: <input type="text" ng-model="lastName"></p>
+                <p>Full name is : {{firstName + " " + lastName}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.firstName = "Jane";
+                    $scope.lastName = "Smith";
+                });
+            </script> -->
+            <p class="jumbotron">The AngularJS application is defined by <strong>ng-app="myApp"</strong>. The 
+                application runs inside the &lt;div&gt;. The <strong>ng-controller="myCtrl"</strong> attribute
+                is an AngularJS directive. It defines a controller. The <strong>myCtrl</strong> funstion is a 
+                JavaScript function. AngularJS will invoke the controller with a $scope object. In AngularJS 
+                $scope is the application object (the owner of application variables and functions). The
+                <strong>ng-model</strong> directives bind the input fields to the controller properties.</p>
+            <h2>Controller methods</h2>    
+            <br>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>Input name: <input type="text" ng-model="firstName"></p>
+                <p>Input last name: <input type="text" ng-model="lastName"></p>
+                <p>{{makeFullName()}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.firstName = 'Billy';
+                    $scope.lastName = 'Idol';
+                    $scope.makeFullName = function() {
+                        return $scope.firstName + " " + $scope.lastName;
+                    };
+                });
+            </script> -->
+            <h2>Controllers in external files</h2>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>Input name: <input type="text" ng-model="firstName"></p>
+                <p>Input last name: <input type="text" ng-model="lastName"></p>
+                <p>{{makeFullName()}}</p>
+            </div>
+            <script src="./js/controllers/personController.js"></script> -->
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <ul>
+                    <li ng-repeat="item in names">{{item.name}}</li>
+                </ul>
+            </div>
+            <script src="./js/controllers/namesController.js"></script>
         </div>
     </body>
 </html>
