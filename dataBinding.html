@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>AngularJS Data binding</h2>
+            <p>Data binding in AngularJS is the sinhronization between the model and the view</p>
+            <h3>Data model and the view</h3>
+            <p>AngularJS application usually have a data model. The data model is a collection of data available for application</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                {{firstName + " " + lastName}}
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.firstName = 'John';
+                    $scope.lastName = 'Doe';
+                })
+            </script> -->
+            <h2>HTML view</h2>
+            <p>The HTML container where the AngularJS application is displayed, is called the view</p>
+            <p>The view has access to the model and there are several ways to display model data in the view</p>
+            <p>You can use the <code>ng-bind</code> directive, which will bind the innerHTML of the element to the specified model property</p>
+            <p ng-bind="firstName"></p>
+            <p>You can also use double braces <code>{{ }}</code> to display content from the model</p>
+            <p>First name: {{firstName}}</p>
+            <p>Or you can use <code>ng-model</code> directive on HTML controlls to bind the data to the view</p>
+            <h2>The <code>ng-model</code> directive</h2>
+            <p>Use the <code>ng-model</code> directive to bind data from the model to the view on HTML controls (input, textarea, select).</p>
+            <p>The <code>ng-model</code> directive provides a two-way binding between the model and the view</p>
+            <h2>Two-way binding</h2>
+            <p>The two-way binding is the synchronization between the model and the view</p>
+            <p>When data in the model changes, the view reflects the change, and when data in the view changes, the model is updated as well</p>
+            <p>This happens immediately and automatically, which makes sure that the model and the view is updated at all times</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                Enter name: <input type="text" ng-model="name">
+                <p>You entered {{name}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.name = "John Doe";
+                });
+            </script> -->
+            <h2>AngularJS controller</h2>
+            <p>AngularJS applications are controlled by controllers</p>
+            <p>Because of the immediate synchronization of the model and the view, the controller can be completely separated from the view, and simply concentrate on the model data</p>
+            <p>Thanks to the data binding in AngularJS, the view will reflect any changes made in the controller</p>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <h1 ng-click="changeName()">{{firstName}}</h1>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.firstName = 'John';
+                    $scope.changeName = function() {
+                        $scope.firstName = 'Nelly';
+                    };
+                });
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>AngularJS <code>ng-model</code> directive</h2>
+            <br>
+            <p>The <code>ng-model</code> directive binds the value of HTML controls (input, select, textarea) to application data</p>
+            <h3>The <code>ng-model</code> directive</h3>
+            <h3>and two way binding</h3>
+            <p>With the <code>ng-model</code> directive you can bind the value of an input field to a variable created in AngularJS</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                Name: <input type="text" ng-model="name">
+                <h1>You entered: {{name}}</h1>
+            </div>
+            <script>
+                var app = angular.module('myApp',[]);
+                app.controller('myCtrl', function($scope) {
+                    $scope.name = 'John Doe';
+                });
+            </script> -->
+            <h2>Validate user input</h2>
+            <p>The <code>ng-model</code> directive can provide type validation for application data (number, email, required).</p>
+            <!-- <form ng-app="" name="myForm">
+                Email: <input type="email" ng-model="text" name="myAddress">
+                <span ng-show="myForm.myAddress.$error.email">This email isn't valid</span>
+            </form> -->
+            <p>The <code>span</code> element will be displayed only if expression of <code>ng-show</code> attribute returns true</p>
+            <p>If the property in the <code>ng-model</code> attribute doesn't exist, AngularJS will create it for you</p>
+            <h2>Application status</h2>
+            <br>
+            <p>The <code>ng-model</code> directive can provide status for application data (invalid, dirty, touched, error)</p>
+            <!-- <form ng-app="" ng-init="email='qwerty@for.me'" name="myEmail">
+                Email: <input type="email" name="myAddress" ng-model="email" required>
+                <h3>Status</h3>
+                {{myEmail.myAddress.$valid}}
+                {{myEmail.myAddress.$dirty}}
+                {{myEmail.myAddress.$touched}}
+            </form> -->
+            <h2>CSS classes</h2>
+            <p>The <code>ng-model</code> directive provides CSS classes for HTML elements, depending on their status</p>
+            <style>
+                input.ng-invalid {
+                    background-color: lightblue;
+                }
+            </style>
+            <form ng-app="" name="myForm">
+                Enter your name:
+                <input name="myName" type="text" ng-model="name" required>
+            </form>
+            <p>The <code>ng-model</code> directive adds/removes the following classes, according to the status of form field</p>
+            <ul>
+                <li><code>ng-empty</code></li>
+                <li><code>ng-not-empty</code></li>
+                <li><code>ng-touched</code></li>
+                <li><code>ng-untouched</code></li>
+                <li><code>ng-valid</code></li>
+                <li><code>ng-invalid</code></li>
+                <li><code>ng-dirty</code></li>
+                <li><code>ng-pending</code></li>
+                <li><code>ng-pristine</code></li>
+            </ul>
+        </div>
+    </body>
+</html>
