@@ -14,7 +14,22 @@
     </head>
     <body>
         <div class="container">
-
+            <h2>AngularJS scope</h2>
+            <p>The scope is the binding part between the HTML (view) and the JavaScript (controller)</p>
+            <p>The scope is an object with the available properties and methods</p>
+            <p>The scope is available for both: the view and the controller</p>
+            <p>When you make a controller in AngularJS, you pass the <code>$scope</code> objest as an argument</p>
+            <p>Properties, made in the controller, can be reffered to in the view</p>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <h1>My car is {{myCar}}</h1>
+            </div>
+            <script>
+                angular.module('myApp', []).controller('myCtrl', function($scope) {
+                    $scope.myCar = 'Ford Focus RS';
+                });
+            </script>
+            <p>When adding properties to the <code>$scope</code> object in the controller, the view (HTML) gets axcess to these properties</p>
+            <p>In the view you don't use the <code>$scope</code> prefix, you just refer to the propertyname, like {{myCar}}.
         </div>
     </body>
 </html>
