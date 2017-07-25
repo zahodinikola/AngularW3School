@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>AngularJS AJAX - $http</h2>
+            <p><strong>$http</strong> is an AngularJS service for reading data from remote servers</p>
+            <br>
+            <h2>AngularJS $http</h2>
+            <br>
+            <p>The AngularJS $http service makes a request to the server and returns the response</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>The message is {{message}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+                    $scope.message = 'raw';
+                    $http.get("source.txt").then(function(response) {
+                        $scope.message = response.data;
+                    });
+                });
+            </script> -->
+            <h2>Methods</h2>
+            <p>The <code>.get</code> method is a shortcut method of the <code>$http</code> service. There are several shortcut methods.</p>
+            <ul>
+                <li><code>.delete</code></li>
+                <li><code>.get</code></li>
+                <li><code>.jsonp</code></li>
+                <li><code>.head</code></li>
+                <li><code>.patch</code></li>
+                <li><code>.post</code></li>
+                <li><code>.put</code></li>
+            </ul>
+            <br>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <h3>Message is {{message}}</h3>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+                    $scope.message = 'nothing';
+                    $http({
+                        method: 'get',
+                        url: 'source.txt'
+                    }).then(function(response) {
+                        $scope.message = response.data;
+                    }, function(reason) {
+                        $scope.message = reason.status;
+                    });
+                });
+            </script> -->
+            <h2>Properties</h2>
+            <p>The response from the server is an object with these properties</p>
+            <ul>
+                <li><code>.config</code> the object used to generate the request</li>
+                <li><code>.data</code> a string or an object, carrying the response from the server</li>
+                <li><code>.headers</code> a function to use to get header information</li>
+                <li><code>.status</code> a number defining the HTTP status</li>
+                <li><code>.statusText</code> a string defining the HTTP status</li>
+            </ul>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <ul>
+                    <li>{{data}}</li>
+                    <li>{{status}}</li>
+                    <li>{{text}}</li>
+                </ul>
+            </div>
+            <script>
+                angular.module('myApp', []).controller('myCtrl', function($scope, $http) {
+                    $scope.data = "blanck";
+                    $scope.status = 404;
+                    $scope.text = 'empty';
+                    $http.get('source.txt').then(function(response) {
+                        $scope.data = response.data;
+                        $scope.status = response.status;
+                        $scope.text = response.statusText;
+                    });
+                });
+            </script> -->
+            <p>To handle errors add extra function to <code>then</code> method</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <ul>
+                    <li>{{data}}</li>
+                    <li>{{status}}</li>
+                    <li>{{text}}</li>
+                </ul>
+            </div>
+            <script>
+                angular.module('myApp', []).controller('myCtrl', function($scope, $http) {
+                    $scope.data = "blanck";
+                    $scope.status = 404;
+                    $scope.text = 'empty';
+                    $http.get('_source.txt').then(function(response) {
+                        $scope.data = response.data;
+                        $scope.status = response.status;
+                        $scope.text = response.statusText;
+                    }, function(reason) {
+                        $scope.data = "something went wrong";
+                        $scope.status = reason.status;
+                        $scope.text = reason.statusText;
+                    });
+                });
+            </script> -->
+            <h2>JSON</h2>
+            <p>The data you get from the response is expected to be in JSON format</p>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <ul>
+                    <li ng-repeat="item in myData">
+                        {{item.Name}} - {{item.Country}}
+                    </li>
+                </ul>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+                    $http.get('datas.json').then(function(response) {
+                        $scope.myData = response.data.records;
+                    });
+                });
+            </script>
+            <p>The application <code>myApp</code> defines the <code>myCtrl</code> controller with a <code>$scope</code> and <code>$http</code> object</p>
+            <p><code>$http</code> is an <strong>XMLHttpRequest object</strong> for requesting external data</p>
+            <p><code>$http.get()</code> reads <strong>JSON data</strong> from file on server. On success the controller creates a property <code>myData</code> in the <code>scope</code> with JSON Data from the server<p>
+        </div>
+    </body>
+</html>
