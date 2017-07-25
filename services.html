@@ -15,7 +15,109 @@
     <body>
         <div class="container">
 			<h2>AngularJS services</h2>
-			
+            <p> In AngularJS you can make your own service or use one of the many built-in services</p>
+            <p>In AngularJS a service is a function or object that is available for and limited to your AngularJS application</p>
+            <p>The <code>$location</code> service is passed into the controller as an argument. In order to use the service in the controller, it must be defined as a dependency.</p>
+            <p>The <code>$location</code> service has methods which return information about the location of the current page</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                {{myURL}}
+            </div>
+            <script>
+                angular.module('myApp', []).controller('myCtrl', function($scope, $location) {
+                    $scope.myURL = $location.absUrl();
+                });
+            </script> -->
+            <h2>Why use services?</h2>
+            <p class="jumbotron">For many services, like the <code>$location</code> service, it seems like you could use objects that are already in the DOM, like 
+                the <code>window.location</code> object, and you could, but it would have some limitations, at least for your AngularJS application. AngularJS constantly supervises your application, and for it to handle changes and
+                events properly, AngularJS prefers that you use the <code>$location</code> service instead of the <code>window.location</code> object.</p>
+            <br>
+            <h2>The <code>$http</code> service</h2>
+            <p>The <code>$http</code> service is one of the most common used services in AngularJS applications</p>
+            <p>The service makes the request to the server and lets your application handle the response</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>Data retrieved from file is <code>{{retrievedData}}</code></p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+                    $http.get("source.txt").then(function(response) {
+                        $scope.retrievedData = response.data;
+                    });
+                });
+            </script> -->
+            <br>
+            <h2>The <code>$timeout</code> service</h2>
+            <p>The <code>$timeout</code> service is AngularJS' version of the <code>window.setTimeout</code> function</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>Timed out message is {{myMessage}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $timeout) {
+                    $scope.myMessage = "Hello!";
+                    $timeout(function() {
+                        $scope.myMessage = 'How are you?';
+                    }, 2000);
+                });
+            </script> -->
+            <h2>The interval service</h2>
+            <p>The <code>$interval</code> service is AngularJS' version of the <code>window.setInterval</code> function</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>Now is {{theTime}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp',[]);
+                app.controller('myCtrl', function($scope, $interval) {
+                    $scope.theTime = new Date().toLocaleTimeString();
+                    $interval(function() {
+                        $scope.theTime = new Date().toLocaleTimeString();
+                    }, 1000);
+                });
+            </script> -->
+            <h2>Create your own service</h2>
+            <p>To create your own service connect your service to the module</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>The hexamail representation of 255 is {{result}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.service('toHex', function() {
+                    this.serviceFunction = function(parameter) {
+                        return parameter.toString(16);
+                    };
+                });
+                app.controller('myCtrl', function($scope, toHex) {
+                    $scope.result = toHex.serviceFunction(255);
+                });
+            </script> -->
+            <h2>Use a custom service inside a filter</h2>
+            <p>Once you have cteated a service and connected it to your application, you can use the service in any controller, directive, filter or even inside other services</p>
+            <p>To use the service inside a filter add it as a dependency when defining the filter</p>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <ul>
+                    <li ng-repeat="item in numbers">
+                        {{item}} - {{item | myFilter}}
+                    </li>
+                </ul>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.service('myService', function() {
+                    this.makeHexamail = function(parameter) {
+                        return parameter.toString(16);
+                    };
+                });
+                app.filter('myFilter', function(myService) {
+                    return function(item) {
+                        return myService.makeHexamail(item);
+                    };
+                });
+                app.controller('myCtrl', function($scope) {
+                    $scope.numbers = [23, 45, 234];
+                });
+            </script>
+
         </div>
     </body>
 </html>
