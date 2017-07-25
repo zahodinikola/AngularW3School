@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>AngularJS filters</h2>
+            <p>AngularJS provides filters to transform data</p>
+            <ul>
+                <li><code>currency</code> format a number to a currency format</li>
+                <li><code>date</code> format a date to a specified format</li>
+                <li><code>filter</code> select a subset of items from an array</li>
+                <li><code>json</code> format an object to a JSON string</li>
+                <li><code>limitTo</code> limits an array/string into specified number of elements/characters</li>
+                <li><code>lowercase</code> formats a string to lower case</li>
+                <li><code>number</code> format a number to a string</li>
+                <li><code>orderBy</code> orders an array by an expression</li>
+                <li><code>uppercase</code> formats a string to upper case</li>
+            </ul>
+            <h2>Adding filters to expressions</h2>
+            <p>Filters cam be added to expressions by using the pipe <code>|</code> character, followed by a filter</p>
+            <p>The <code>uppercase</code> filter formats string to upper case</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>The name of {{name}} is {{name | uppercase}}</p>
+            </div>
+            <script>
+                angular.module('myApp', []).controller('myCtrl', function($scope) {
+                    $scope.name = 'marchello';
+                });
+            </script> -->
+            <p>The <code>lowercase</code> filter formats string to lower case</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>The name of {{name}} is {{name | lowercase}}</p>
+            </div>
+            <script>
+                angular.module('myApp', []).controller('myCtrl', function($scope) {
+                    $scope.name = 'BENJAMIN';
+                });
+            </script> -->
+            <h2>Adding filters to directives</h2>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <select ng-model="sortOrder">
+                    <option>name</option>
+                    <option>country</option>
+                </select>
+                <ul>
+                    <li ng-repeat="name in names | orderBy: sortOrder">{{name.name + " - " + name.country}}</li>
+                </ul>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.names = [
+                        {name: 'Marya', country: 'Argentina'},
+                        {name: 'Jorge', country: 'Portugalia'},
+                        {name: 'Abu', country: 'Aphganistan'}
+                    ];
+                    $scope.sortOrder = 'country';
+                });
+            </script> -->
+            <h2>The currency filter</h2>
+            <!-- <div ng-app="" ng-init="price=56">
+                {{price | currency}}
+            </div> -->
+            <h2>The filter Filter</h2>
+            <p>The <code>filter</code> filter can only be used on an array. It returns a subset of the original array that contains only the matching items</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <select ng-model="contains">
+                    <option>a</option>
+                    <option>b</option>
+                    <option>c</option>
+                    <option>p</option>
+                </select>
+                <ul>
+                    <li ng-repeat="name in names | filter: contains">
+                        {{name.name + " - " + name.country}}
+                    </li>
+                </ul>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.names = [
+                        {name: 'Marya', country: 'Argentina'},
+                        {name: 'Jorge', country: 'Portugalia'},
+                        {name: 'Abu', country: 'Aphganistan'}
+                    ];
+                    $scope.contains = '';
+                });
+            </script> -->
+            <h2>Filter an array based on user input</h2>
+            
+        </div>
+    </body>
+</html>

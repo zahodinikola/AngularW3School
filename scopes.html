@@ -20,16 +20,70 @@
             <p>The scope is available for both: the view and the controller</p>
             <p>When you make a controller in AngularJS, you pass the <code>$scope</code> objest as an argument</p>
             <p>Properties, made in the controller, can be reffered to in the view</p>
-            <div ng-app="myApp" ng-controller="myCtrl">
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
                 <h1>My car is {{myCar}}</h1>
             </div>
             <script>
                 angular.module('myApp', []).controller('myCtrl', function($scope) {
                     $scope.myCar = 'Ford Focus RS';
                 });
-            </script>
+            </script> -->
             <p>When adding properties to the <code>$scope</code> object in the controller, the view (HTML) gets axcess to these properties</p>
             <p>In the view you don't use the <code>$scope</code> prefix, you just refer to the propertyname, like {{myCar}}.
+            <h2>Understanding the scope</h2>
+            <p>If we consider the AngularJS application consist of:</p>
+            <ul>
+                <li>View, which is the HTML;</li>
+                <li>Model, which is the data available for the current view</li>
+                <li>Controller, which is the JavaScript function that makes/changes/removes/controls the data</li>
+            </ul>
+            <p>Then the scope is the Model</p>
+            <p>The scope is a JavaScript object with properties and methods, which are available for both the view and the controller</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>Input your name: <input type="text" ng-model="name"></p>
+                <p>My name is {{name}}</p>
+            </div>
+            <script>
+                angular.module('myApp', []).controller('myCtrl', function($scope) {
+                    $scope.name = 'Borat';
+                });
+            </script> -->
+            <h2>Know your scope</h2>
+            <p>Its important to know which scope you are dealing with, at any time</p>
+            <p>There can be sections in HTML DOM, which can only access certain scopes</p>
+            <p>When dealing with the <code>ng-repeat</code> directive, each repetition has access to the current repetition object</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <ul>
+                    <li ng-repeat="name in names">{{name}}</li>
+                </ul>
+            </div>
+            <script>
+                angular.module('myApp', []).controller('myCtrl', function($scope) {
+                    $scope.names = ['Lionelle', 'Betany', 'Lora'];
+                });
+            </script> -->
+            <p>In this case each repetition object is a string belonging to <code>&lt;li&gt;</code> element and referring by <code>name</code></p>
+            <h2>Root scope</h2>
+            <p>All applications has a <code>$rootScope</code> which is the scope created on the HTML element that contains <code>ng-app</code> directive</p>
+            <p>The <code>rootScope</code> available in the entire application.</p>
+            <p>If a variable has the same name in both the current scope and in the <code>rootScope</code>, the application use the one in current scope</p>
+            <div ng-app="myApp">
+                <p>The <strong>rootScope's</strong> favourite color is <h1>{{color}}</h1></p>
+                <div ng-controller="myCtrl">
+                    <p>The <strong>scope of the controller's</strong> favourite color is <h1>{{color}}</h1></p>
+                </div>
+                <p>The <strong>rootScope's</strong> favourite color is still <h1>{{color}}</h1></p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.run(function($rootScope) {
+                    $rootScope.color = 'red';
+                });
+                app.controller('myCtrl', function($scope) {
+                    $scope.color = 'blue';
+                });
+            </script>
+
         </div>
     </body>
 </html>
