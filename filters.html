@@ -99,7 +99,105 @@
                 });
             </script> -->
             <h2>Filter an array based on user input</h2>
-            
+            <!--<div ng-app="myApp" ng-controller="myCtrl">
+				<p>Enter filter: <input type="text" ng-model="fltrCriteria"</p>
+				<p>Filtered list:</p>
+				<ul>
+					<li ng-repeat="item in names | filter: fltrCriteria">
+						{{item.name + " - " + item.car}}
+					</li>
+				</ul>
+			</div>
+			<script>
+				var app = angular.module('myApp', []);
+				app.controller('myCtrl', function($scope) {
+					$scope.names = [
+					{name: 'Veronica', car: 'Citroen'},
+					{name: 'Angelica', car: 'Wolksvagen'},
+					{name: 'Ilona', car: 'Caterpillar'}
+					];
+					
+				});
+			</script>-->
+			<h1>Sort an array based on user input</h2>
+			<p>Click the table headers to change the sort order</p>
+			<p>By adding the <code>ng-click</code> directive on the table headers we can run a function that changes the sorting order of the array</p>
+			<!-- <style>
+				.table-hover > tbody > tr:hover td,
+				.table-hover > tbody > tr:hover th {
+					background-color: #700;
+				}
+
+
+				.table-striped > tbody > tr:nth-of-type(odd) {
+				  background-color: #999;
+				}
+			</style>
+			<div ng-app="myApp" ng-controller="myCtrl">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th ng-click="orderByMe('name')">Name</th>
+							<th ng-click="orderByMe('country')">Country</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="entry in names | orderBy: sortOrder">
+							<td>{{entry.name}}</td>
+							<td>{{entry.country}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<script>
+				var app = angular.module('myApp', []);
+				app.controller('myCtrl', function($scope) {
+					$scope.sortOrder = 'name';
+					$scope.orderByMe = function(category) {
+						$scope.sortOrder = category;
+						};
+					$scope.names = [
+						{name:'Jani',country:'Norway'},
+						{name:'Carl',country:'Sweden'},
+						{name:'Margareth',country:'England'},
+						{name:'Hege',country:'Norway'},
+						{name:'Joe',country:'Denmark'},
+						{name:'Gustav',country:'Sweden'},
+						{name:'Birgit',country:'Denmark'},
+						{name:'Mary',country:'England'},
+						{name:'Kai',country:'Norway'}
+					];
+				});
+			</script> -->
+			<h2>Custom filters</h2>
+			<div ng-app="myApp" ng-controller="myCtrl">
+				<ul>
+					<li ng-repeat="item in names">
+					{{item | myFilter}}
+					</li>
+				</ul>
+			</div>
+			<script>
+				var app = angular.module('myApp', []);
+				app.filter('myFilter', function() {
+					return function(itm) {
+						
+						var i, char, string = "";
+						
+						for(i = 0; i < itm.length; i++) {
+							char = itm[i];
+							if(i % 2 == 0) {
+								char = char.toUpperCase();
+							};
+							string += char;
+						};
+						return string;	
+					};
+				});
+				app.controller('myCtrl', function($scope) {
+					$scope.names = ['Jani', 'Carl', 'Margareth', 'Hege', 'Joe', 'Gustav', 'Birgit', 'Mary', 'Kai'];
+				});
+			</script>
         </div>
     </body>
 </html>
