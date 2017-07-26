@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <p>AngularJS tables</p>
+            <p>The <code>ng-repeat</code> directive is perfect for displaying tables</p>
+            <h3>Displaying data in a table</h3>
+            <!-- <style>
+				.table-hover > tbody > tr:hover td {
+					background-color: #700;
+				}
+				.table-striped > tbody > tr:nth-of-type(odd) {
+				  background-color: #999;
+				}
+			</style>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="entry in myData">
+                            <td>{{entry.Name}}</td>
+                            <td>{{entry.Country}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+                    $http.get('datas.json')
+                        .then(function(response) {
+                            $scope.myData = response.data.records;
+                        });
+                });
+            </script> -->
+            <h3>Displaying with CSS style</h3>
+            <!-- <p>To make it nice add some CSS to the page</p>
+            <style>
+                table, th, td {
+                    border: 1px solid gray;
+                    border-collapse: collapse;
+                    padding: 5px;
+                }
+                table tr:nth-child(odd) {
+                    background-color: #f1f1f1;
+                }
+                table tr:nth-child(even) {
+                    background-color: #ffffff;
+                }
+			</style>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="entry in myData">
+                            <td>{{entry.Name}}</td>
+                            <td>{{entry.Country}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+                    $http.get('datas.json')
+                        .then(function(response) {
+                            $scope.myData = response.data.records;
+                        });
+                });
+            </script> -->
+            <h3>Displaying with orderBy filter</h3>
+            <!-- <br>
+            <style>
+                table, th, td {
+                    border: 1px solid gray;
+                    border-collapse: collapse;
+                    padding: 5px;
+                }
+                table tr:nth-child(odd) {
+                    background-color: #f1f1f1;
+                }
+                table tr:nth-child(even) {
+                    background-color: #ffffff;
+                }
+			</style>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="entry in myData | orderBy: 'Country'" >
+                            <td>{{entry.Name}}</td>
+                            <td>{{entry.Country}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+                    $http.get('datas.json')
+                        .then(function(response) {
+                            $scope.myData = response.data.records;
+                        });
+                });
+            </script> -->
+            <h3>Displaying with uppercase filter</h3>
+            <br>
+            <style>
+                table, th, td {
+                    border: 1px solid gray;
+                    border-collapse: collapse;
+                    padding: 5px;
+                }
+                table tr:nth-child(odd) {
+                    background-color: #f1f1f1;
+                }
+                table tr:nth-child(even) {
+                    background-color: #ffffff;
+                }
+			</style>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="entry in myData | orderBy: 'Country'" >
+                            <td>{{entry.Name}}</td>
+                            <td>{{entry.Country | uppercase}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+                    $http.get('datas.json')
+                        .then(function(response) {
+                            $scope.myData = response.data.records;
+                        });
+                });
+            </script>
+
+        </div>
+    </body>
+</html>
