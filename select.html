@@ -18,7 +18,7 @@
 			<p>AngularJS lets you create dropdown lists based on arrays or an object</p>
 			<h3>Creating a select box using <code>ng-options</code></h3>
 			<p>If you want to create a dropdown list based on an array or an object in AngularJS you should use the <code>ng-options</code> directive</p>
-			<div ng-app="myApp" ng-controller="myCtrl">
+			<!-- <div ng-app="myApp" ng-controller="myCtrl">
 				<select ng-model="selectedName" ng-options="x for x in names">
 				</select>
 				<p>{{selectedName}}</p>
@@ -28,7 +28,136 @@
 				app.controller('myCtrl', function($scope) {
 					$scope.names = ['First', 'Second', 'Third'];
 				});
-			</script>
+            </script> -->
+            <h3><code>ng-options</code> vs <code>ng-repeat</code></h3>
+            <p>You can also use the <code>ng-repeat</code> directive to make the same dropdown list</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <select ng-model="selected">
+                    <option ng-repeat="item in names">{{item}}</option>
+                </select>
+                {{selected}}
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.names = ['Astro', 'Strato', 'Iono'];
+                });
+            </script> -->
+            <p>The <code>ng-repeat</code> directive repeates the block of HTML code for each item in an array</p>
+            <p>It can be used to create options in a dropdown list, but the <code>ng-options</code> directive was made specially for filling a dropdown list with options and has at least one importante advantage:</p>
+            <p>dropdowns made with <code>ng-options</code> allows the selected value to be an object,
+                while dropdowns made from <code>ng-repeat</code> has to be a string</p>
+            <br>
+            <h2>What do i use?</h2>
+            <br>
+            <h3>Lets assume we have an array of objects</h3>
+            <pre>
+                $scope.cars = [
+                    {model : "Ford Mustang", color : "red"},
+                    {model : "Fiat 500", color : "white"},
+                    {model : "Volvo XC90", color : "black"}
+                ];
+            </pre>
+            <p>The <code>ng-repeat</code> directive has its limitations, the selected value must be a string</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <select ng-model="selection">
+                    <option ng-repeat="option in myData">{{option.model}}</option>
+                </select>
+                <p>The selection is: {{selection}}</p>
+                <script>
+                    var app = angular.module('myApp', []);
+                    app.controller('myCtrl', function($scope) {
+                        $scope.myData = [
+                            {model : "Ford Mustang", color : "red"},
+                            {model : "Fiat 500", color : "white"},
+                            {model : "Volvo XC90", color : "black"}
+                        ];
+                    });
+                </script> -->
+            <p>When using the <code>ng-options</code> directive, the selected value can be an object:</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <select ng-model="mySelection" ng-options="data.model for data in myData">
+                </select>
+
+                <p>{{mySelection.model}}</p>
+                <p>{{mySelection.color}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.myData = [
+                            {model : "Ford Mustang", color : "red"},
+                            {model : "Fiat 500", color : "white"},
+                            {model : "Volvo XC90", color : "black"}
+                        ];
+                });
+            </script> -->
+            <p>When the selected value can be an object, it can hold more information and your appllication can be more flexible</p>
+            <br>
+            <h3>The Data Source as an Object</h3>
+            <p>In the previous examples the data source was an array, but it can also be an object</p>
+            <pre>
+                $scope.cars = {
+                    car01 : "Ford",
+                    car02 : "Fiat",
+                    car03 : "Volvo"
+                };
+            </pre>
+            <p>The expression in <code>ng-options</code> attribute is a bit different for objects</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <select ng-model="mySelection" ng-options="x for (x, y) in cars">
+                </select>
+                <p>The selection is: {{mySelection}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.cars = {
+                        car1: "Wolksvagen",
+                        car2: "Audi",
+                        car3: "Ford"
+                    };
+                });
+            </script> -->
+            <p>The selected value will always be the <strong>value</strong> in a key-<strong>value</strong> pair</p>
+            <p>The <strong>value</strong> in a key-<strong>value</strong> pair can also be an object</p>
+            <!-- <div ng-app="myApp" ng-controller="myCtrl">
+                <p>Select a car</p>
+                <select ng-model="mySelection" ng-options="key for (key, value) in cars">
+                </select>
+                <p>You selected: {{mySelection.brand}}</p>
+                <p>The model is: {{mySelection.model}}</p>
+                <p>The color is: {{mySelection.color}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.cars = {
+                        car01 : {brand : "Ford", model : "Mustang", color : "red"},
+                        car02 : {brand : "Fiat", model : "500", color : "white"},
+                        car03 : {brand : "Volvo", model : "XC90", color : "black"}
+                    };
+                });
+            </script> -->
+            <p>The options in the dropdown list can also be the value or a property of the value object</p>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <p>Select a car</p>
+                <select ng-model="mySelection" ng-options="value.brand for (key, value) in cars">
+                </select>
+                <p>You selected: {{mySelection.brand}}</p>
+                <p>The model is: {{mySelection.model}}</p>
+                <p>The color is: {{mySelection.color}}</p>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope) {
+                    $scope.cars = {
+                        car01 : {brand : "Ford", model : "Mustang", color : "red"},
+                        car02 : {brand : "Fiat", model : "500", color : "white"},
+                        car03 : {brand : "Volvo", model : "XC90", color : "black"}
+                    };
+                });
+            </script>
         </div>
     </body>
 </html>
