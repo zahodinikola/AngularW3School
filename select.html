@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+			<h2>AngularJS Select boxes</h2>
+			<p>AngularJS lets you create dropdown lists based on arrays or an object</p>
+			<h3>Creating a select box using <code>ng-options</code></h3>
+			<p>If you want to create a dropdown list based on an array or an object in AngularJS you should use the <code>ng-options</code> directive</p>
+			<div ng-app="myApp" ng-controller="myCtrl">
+				<select ng-model="selectedName" ng-options="x for x in names">
+				</select>
+				<p>{{selectedName}}</p>
+			</div>
+			<script>
+				var app = angular.module('myApp', []);
+				app.controller('myCtrl', function($scope) {
+					$scope.names = ['First', 'Second', 'Third'];
+				});
+			</script>
+        </div>
+    </body>
+</html>

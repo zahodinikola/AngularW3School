@@ -132,7 +132,7 @@
             </script> -->
             <h3>Displaying with uppercase filter</h3>
             <br>
-            <style>
+<!--             <style>
                 table, th, td {
                     border: 1px solid gray;
                     border-collapse: collapse;
@@ -169,8 +169,54 @@
                             $scope.myData = response.data.records;
                         });
                 });
-            </script>
-
+            </script> -->
+			<br>
+			<h3>Display the table index ($index)</h3>
+			<p>To display the table index add a &lt;td&gt; with <code>$index</code></p>
+<!-- 			<div ng-app="myApp" ng-controller="myCtrl">
+				<table class="table">
+					<tr ng-repeat="item in myData">
+						<td>{{$index + 1}} </td>
+						<td>{{item.Name}}</td>
+						<td>{{item.Country}}</td>
+					</tr>
+				</table>
+			</div>
+			<script>
+				var app = angular.module('myApp', []);
+				app.controller('myCtrl', function($scope, $http) {
+					$http.get('datas.json')
+						.then(function(response) {
+							$scope.myData = response.data.records;
+						});
+				});
+			</script> -->
+			<h3>Using $even and $odd</h3>
+			<div ng-app="myApp" ng-controller="myCtrl">
+				<table class="table">
+					<tr>
+						<th>Name</th>
+						<th>Country</th>
+					</tr>
+					<tr ng-repeat="item in myData">
+						<td ng-if="$even" style="background-color: #f1f1f1">{{item.Name}}</td>
+						<td ng-if="$odd">{{item.Name}}</td>
+						<td ng-if="$even" style="background-color: #f1f1f1">{{item.Country}}</td>
+						<td ng-if="$odd">{{item.Country}}</td>
+					</tr>
+				</table>
+			</div>
+			<script>
+				var app = angular.module('myApp', []);
+				app.controller('myCtrl', function($scope, $http) {
+					$http({
+						method: 'get',
+						url: 'datas.json'
+						}).then(function(response) {
+							$scope.myData = response.data.records;
+						});
+				});
+			</script>
         </div>
     </body>
 </html>
