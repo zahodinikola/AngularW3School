@@ -111,7 +111,7 @@
 				<h3>$event object</h3>
 				<p>When calling the function the <code>$event</code> can be passed as an argument</p>
 				<p>The <code>$event</code> object contains the browser's event object</p>
-				<div ng-app="myApp" ng-controller="myCtrl">
+				<!-- <div ng-app="myApp" ng-controller="myCtrl">
 					<h1 ng-mousemove="myFunc($event)">Move mouse over me</h1>
 					<p>My coordinates are: {{x + ", " + y}}</p>
 				</div>
@@ -122,7 +122,58 @@
 							$scope.y = event.clientY;
 						};
 					});
-				</script>
+                </script> -->
+                <h3>An AngularJS Form example</h3>
+                <div ng-app="myApp" ng-controller="myCtrl">
+                    <form novalidate>
+                        <div class="row">
+                            <p class="col-sm-offset-4 col-sm-2">First name: </p>
+                            <input type="text" class="col-sm-3" ng-model="user.firstName">
+                        </div>
+                        <div class="row">
+                            <p class="col-sm-offset-4 col-sm-2">Last name: </p>
+                            <input type="text" class="col-sm-3" ng-model="user.lastName">
+                        </div>
+                        <div class="col-sm-offset-4 col-sm-1">
+                            <button type="button" class="btn btn-primary" ng-click="reset()">Reset</button>
+                        </div>
+                    </form>
+
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-offset-4 col-sm-6">
+                            Form: 
+                            {{user}}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-offset-4 col-sm-6">
+                            Master: 
+                            {{master}}
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var app = angular.module('myApp', []);
+                    app.controller('myCtrl', function($scope) {
+                        $scope.master = {firstName: 'SpungeBob', lastName: 'Squarepants'};
+                        $scope.reset = function () {
+                            $scope.user = angular.copy($scope.master);
+                        };
+                        $scope.reset();
+                    });
+                </script>
+                <br>
+                <pre>
+                    The ng-app directive defines the AngularJS application.
+                    The ng-controller directive defines the application controller.
+                    The ng-model directive binds two input elements to the user object in the model.
+                    The formCtrl controller sets initial values to the master object, and defines the reset() method.
+                    The reset() method sets the user object equal to the master object.
+                    The ng-click directive invokes the reset() method, only if the button is clicked.
+                    The novalidate attribute is not needed for this application, but normally you will use it in AngularJS forms, to override standard HTML5 validation.
+                </pre>
         </div>
     </body>
 </html>
