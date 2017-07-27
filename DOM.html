@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>AngularJS HTML DOM</h2>
+            <p>AngularJS has directives for binding application data to attributes of HTML DOM elements</p>
+            <h3>The <code>ng-disabled</code> directive</h3>
+            <p>The <code>ng-disabled</code> directive bindes AngularJS application data to the disabled attribute of HTML elements</p>
+            <!-- <div ng-app="" ng-init="mySwitch = true">
+                <p><button ng-disabled="mySwitch">Click me!</button></p>
+                <p>Disable the button: <input type="checkbox" ng-model="mySwitch"></p>
+                <p>{{mySwitch}}</p>
+            </div> -->
+            <p>The <strong>ng-disabled</strong> directive binds the application data <strong>mySwitch</strong> to the HTML button's <strong>disabled</strong> attribute</p>
+            <p>The <strong>ng-model</strong> directive binds the value of HTML checkbox element to the value of <strong>mySwitch</strong></p>
+            <p>If the value of <strong>mySwitch</strong> evaluates to true, the button will be disabled</p>
+            <pre>
+                <p><button disabled>Click me!</button></p>
+            </pre>
+            <p>If the value of <strong>mySwitch</strong> evaluates to false, the button will be anabled</p>
+            <pre>
+                <p><button>Click me!</button></p>
+            </pre>
+            <br>
+            <h3>The <code>ng-show</code> directive</h3>
+            <br>
+            <p>The <code>ng-show</code> directive shows or hides an HTML element</p>
+            <br>
+            <!-- <div ng-app="">
+                <p ng-show="true">I'm visible</p>
+                <p ng-show="false">I'm invisible</p>
+            </div> -->
+            <p>The <strong>ng-show</strong> directive shows (or hides) HTML elements based on <strong>value</strong> of ng-show</p>
+            <p>It can be used any expression, that evaluates to true or false</p>
+            <br>
+            <h3>The <strong>ng-hide</strong> directive</h3>
+            <p>The <strong>ng-hide</strong> directive hides or shows an HTML element</p>
+            <div ng-app="">
+                <p ng-hide="true">This content is hided</p>
+                <p ng-hide="false">This content is shown</p>
+            </div>
+
+        </div>
+    </body>
+</html>

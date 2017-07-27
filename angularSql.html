@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>AngularJS SQL</h2>
+            <br>
+            <p>Data in Database should be in JSON format to be able to be displayed by AngularJS</p>
+            <h3>Fetching data from a PHP server running MySQL</h3>
+            <div ng-app="myApp" ng-controller="myCtrl">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in myData | orderBy: 'Country'">
+                            <td>{{item.Name}}</td>
+                            <td>{{item.Country}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                var app = angular.module('myApp', []);
+                app.controller('myCtrl', function($scope, $http) {
+                    $http({
+                        method: 'get',
+                        url: 'datas.json'
+                    }).then(function(response) {
+                        $scope.myData = response.data.records;
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
