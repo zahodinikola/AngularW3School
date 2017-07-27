@@ -84,7 +84,7 @@
             </script> -->
             <h3>Toggle, true/false</h3>
             <p>If you want to show a section of HTML when the button is clicked and hide when the button is clicked again like a dropdown menu make the button behave like a toggle switch</p>
-            <div ng-app="myApp" ng-controller="myCtrl">
+<!--             <div ng-app="myApp" ng-controller="myCtrl">
                 <button ng-click="toggleView()"><span>{{buttonTag}}</span></button>
                 <ul ng-show="show">
                     <li>1</li>
@@ -107,7 +107,22 @@
                             }
                     };
                 });
-                </script>
+                </script> -->
+				<h3>$event object</h3>
+				<p>When calling the function the <code>$event</code> can be passed as an argument</p>
+				<p>The <code>$event</code> object contains the browser's event object</p>
+				<div ng-app="myApp" ng-controller="myCtrl">
+					<h1 ng-mousemove="myFunc($event)">Move mouse over me</h1>
+					<p>My coordinates are: {{x + ", " + y}}</p>
+				</div>
+				<script>
+					angular.module('myApp', []).controller('myCtrl', function($scope) {
+						$scope.myFunc = function(event) {
+							$scope.x = event.clientX;
+							$scope.y = event.clientY;
+						};
+					});
+				</script>
         </div>
     </body>
 </html>

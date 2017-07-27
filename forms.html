@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+			<h2>AngularJS forms</h2>
+			<p>Forms in AngularJS provide data binding and validation of input controls</p>
+			<h3>Input controls</h3>
+			<p>Input controls are the HTML input elements</p>
+			<ul>
+				<li>input elements</li>
+				<li>select elements</li>
+				<li>textarea elements</li>
+				<li>button elements</li>
+			</ul>
+			<h3>Data binding</h3>
+			<p>Input controls provide data binding by using <code>ng-model</code> directive</p>
+			<pre>
+				&lt;input type="text" ng-model="name"&gt;
+			</pre>
+			<p>The application does now have a property named <strong>name</strong></p>
+			<p>The <code>ng-model</code> directive binds the input controller to the rest of your application</p>
+			<p>The property <code>name</code> can be referred to in a controller</p>
+			<p>It can also be referred to elsewhere in the application</p>
+<!-- 			<div ng-app="myApp" ng-controller="myCtrl">
+				<form>
+					<p>Input name: <input name="firstName" type="text" ng-model="firstName"></p>
+				</form>
+				<p>You entered {{firstName}}</p>
+			</div>
+			<script>
+				var app = angular.module('myApp', []);
+				app.controller('myCtrl', function($scope) {
+					$scope.firstName = 'John';
+				});
+			</script> -->
+			<h3>Checkboxes</h3>
+			<p>A checkbox has thr value <code>true</code> or <code>false</code>. Apply the <code>ng-model</code> directive to your checkbox and use its value in your application</p>
+			<br>
+<!-- 			<div ng-app="">
+				<p>Check to show a header</p>
+				<input type="checkbox" ng-model="myValue">
+				<h1 ng-show="myValue">My header</h1>
+			</div> -->
+			<br>
+			<h3>Radiobuttons</h3>
+			<p>Bind the radio button to your application with <code>ng-model</code> directive.</p>
+			<p>Radiobuttons with the same <code>ng-model</code> can have different values, but only the selected one can be used</p>
+			<!-- <div ng-app="">
+				<form>
+					<input type="radio" ng-model="selected" value="dog">Dog
+					<input type="radio" ng-model="selected" value="cat">Cat
+					<input type="radio" ng-model="selected" value="mouse">Mouse
+				</form>
+				{{selected}}
+			</div> -->
+			<h3>Select boxes</h3>
+			<p>Bind select boxes to your application with the <code>ng-model</code> directive</p>
+			<p>The property defined in the <code>ng-model</code> attribute will have the value of the selected option in the selectbox</p>
+			<div ng-app="">
+				<select ng-model="selected">
+					<option>rabbit</option>
+					<option>fox</option>
+					<option>wolf</option>
+				</select>
+				{{selected}}
+			</div>
+        </div>
+    </body>
+</html>
