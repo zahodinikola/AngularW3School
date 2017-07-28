@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "_function": "angular.lowercase()",
+      "Description": "Converts a string to lowercase"
+    },
+    {
+      "_function": "angular.uppercase()",
+      "Description": "Converts a string to uppercase"
+    },
+    {
+      "_function": "angular.isString()",
+      "Description": "Returns true if the reference is a string"
+    },
+    {
+      "_function": "angular.isNumber()",
+      "Description": "Returns true if the reference is a number"
+    }
+  ]
+}
+    
+    	
+	
+	
+	

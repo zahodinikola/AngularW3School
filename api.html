@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>AngularJS global API</h2>
+            <p>The AngularJD global API is a set of JavaScript functions for performing common tasks like:</p>
+            <ul>
+                <li>Comparing objects</li>
+                <li>Iterating objects</li>
+                <li>Converting data</li>
+            </ul>
+            <p>The global API functions are accessed using the angular object</p>
+            <p>Here below is the list of some common API functions</p>
+            <div ng-app="myApp1" ng-controller="myCtrl1">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>API</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="entry in myData">
+                            <td>{{entry._function}}</td>
+                            <td>{{entry.Description}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p>{{x1}} - {{x2}}</p>
+                <p>{{x3}} - {{x4}}</p>
+                <p>{{x5}} - {{x6}}</p>
+                <p>{{x7}} - {{x8}}</p>
+            </div>
+                
+            <script>
+                var app1 = angular.module('myApp1', []);
+                app1.controller('myCtrl1', function($scope, $http) {
+                    $http({
+                        method: 'get',
+                        url: 'myData.json'
+                    }).then(function(response) {
+                        $scope.myData = response.data.records;
+                    });
+                    $scope.x1 = "JOHN";
+                    $scope.x2 = angular.lowercase($scope.x1);
+                    $scope.x3 = "john";
+                    $scope.x4 = angular.uppercase($scope.x3);
+                    $scope.x5 = "string";
+                    $scope.x6 = angular.isString($scope.x5);
+                    $scope.x7 = 55;
+                    $scope.x8 = angular.isNumber($scope.x7);
+                });
+
+                // this won't work, tested
+                // var app = angular.module('myApp', []);
+                // app.controller('myCtrl', function($scope) {
+                //     $scope.x1 = "JOHN";
+                //     $scope.x2 = angular.toLowerCase($scope.x1);
+                //     $scope.x3 = "john";
+                //     $scope.x4 = angular.toUpperCase($scope.x3);
+                //     $scope.x5 = "string";
+                //     $scope.x6 = angular.isString($scope.x5);
+                //     $scope.x7 = 55;
+                //     $scope.x8 = angular.isNumber($scope.x7);
+                // });
+            </script>
+        </div>
+    </body>
+</html>
