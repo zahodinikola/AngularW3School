@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+    
+		<style>
+			div {
+				transition: all linear 0.5s;
+				background-color: lightblue;
+				height: 100px;
+				width: 100%;
+				position: relative;
+				top: 0;
+				left: 0;
+			}
+
+			.ng-hide {
+				height: 0;
+				width: 0;
+				background-color: transparent;
+				top:-200px;
+				left: 200px;
+			}
+		</style>
+	
+	</head>
+    <body ng-app="myApp">
+        <div class="container">
+			<h2>AngularJS animations</h2>
+			<p>AngularJS provides animated transitions with help from CSS</p>
+			<h3>What is an animation?</h3>
+			<p>An animation is when the transformation of HTML element gives you an illusion of motion</p>
+			<br>						
+			<h1>Hide the div <input type="checkbox" ng-model="toHide"></h1>
+			<div ng-hide="toHide"></div>
+			<br>
+			<p>Applications shouldn't be filled with animations, but some animations can make the application easier to understand</p>
+			<h3>What do i need?</h3>
+			<p>To make your application ready for animations you must include AngularJS Animate library</p>
+			<pre>
+			&lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"&gt;&lt;/script&gt;
+			</pre>
+			<p>Then you must refer to the <code>ngAnimate</code> module in your application</p>
+			<pre>
+			&lt;body ng-app="ngAnimate"&gt;
+			</pre>
+			<p>Or, if you application has a name, add <code>ngAnimate</code> as a dependency in your application module</p>
+			<script>
+				var app = angular.module('myApp', ['ngAnimate']);
+			</script>
+        </div>
+		
+    </body>
+</html>
