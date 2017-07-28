@@ -13,7 +13,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
     
-		<style>
+		<!-- <style>
 			div {
 				transition: all linear 0.5s;
 				background-color: lightblue;
@@ -31,7 +31,7 @@
 				top:-200px;
 				left: 200px;
 			}
-		</style>
+		</style> -->
 	
 	</head>
     <body ng-app="myApp">
@@ -55,10 +55,82 @@
 			&lt;body ng-app="ngAnimate"&gt;
 			</pre>
 			<p>Or, if you application has a name, add <code>ngAnimate</code> as a dependency in your application module</p>
+			<!-- <script>
+				var app = angular.module('myApp', ['ngAnimate']);
+			</script> -->
+			<h3>What does <code>ngAnimate</code> do</h3>
+			<p>The <code>ngAnimate</code> module adds and removes classes</p>
+			<p>The <code>ngAnimate</code> module doesn't animate your HTML elements, but when ngAnimate notice certain 
+				events, like hide or show of an HTML element, the element gets some predefined classes
+				which can be used to make animations</p>
+			<p>The directives in AngularJS which add/remove classes are:</p>
+			<ul>
+				<li><code>ng-show</code></li>
+				<li><code>ng-hide</code></li>
+				<li><code>ng-class</code></li>
+				<li><code>ng-view</code></li>
+				<li><code>ng-include</code></li>
+				<li><code>ng-repeat</code></li>
+				<li><code>ng-if</code></li>
+				<li><code>ng-switch</code></li>
+			</ul>
+			<p>The <code>ng-show</code> and <code>ng-hide</code> directives add or remove a <code>ng-hide</code> class value</p>
+			<p>Other directives add <code>ng-enter</code> class value when they enter the DOM and a <code>ng-leave</code> attribute when they are removed from the DOM</p>
+			<p>The <code>ng-repeat</code> directive also adds a <code>ng-move</code> class value when the HTML element changes position</p>
+			<p>In addition, during the animation, the HTML element will have a set of class values, which will be removed 
+				when animation has finished. Example: the <code>ng-hide</code> directive will add these class values:</p>
+			<ul>
+				<li><code>ng-animate</code></li>
+				<li><code>ng-hide-animate</code></li>
+				<li><code>ng-hide-add</code> if the element will be hidden</li>
+				<li><code>ng-hide-remove</code> if the element will be showed</li>
+				<li><code>ng-hide-add-active</code> if the element will be hidden</li>
+				<li><code>ng-hide-remove-active</code> if the element will be showed</li>
+			</ul>
+			<h3>Animation using CSS</h3>
+			<p>We can use CSS transitions or CSS animations to animate HTML elements</p>
+			<h3>CSS transitions</h3>
+			<p>CSS transitions allow you to change CSS property values smoothly, from one value to another over a given duration</p>
+			<p>When the <strong>&lt;div&gt;</strong> element gets <code>ng-hide</code> class, the transition will take 0.5 seconds and the hight will smoothly change from 100px to 0:</p>
+			<!-- <style>
+				div {
+					transition: all linear 0.5s;
+					background-color: lightblue;
+					height: 100px;
+				}
+				.ng-hide {
+					height: 0;
+				}
+			</style> -->
+			<!-- <h1>Show div<input type="checkbox" ng-model="visibleDiv"></h1>
+			<div ng-show="visibleDiv">CSS transitions allow you to change CSS property values smoothly, from one value to another over a given duration</div> -->
+			<br>
+			<h3>CSS animations</h3>
+			<p>The CSS animations allow you to change CSS property value smoothly, from one value to another, over a given duration</p>
+			<p>When the <strong>&lt;div&gt;</strong> element gets the <code>ng-hide</code> class, the myChange animation will run, which will smoothly change height from 100px to 0:</p>
+			<style>
+				@keyframes myChange {
+					from {
+						height: 245px;
+					} to {
+						height: 50px;
+					}
+				}
+				div {
+					background-color:lightblue;
+					height: 245px;
+				}
+				div.ng-hide {
+					animation: 1.5s myChange;
+				}
+			</style>
+
+			<h1>Hide div<input type="checkbox" ng-model="myChange"></h1>
+			<div ng-hide="myChange"></div>
 			<script>
 				var app = angular.module('myApp', ['ngAnimate']);
 			</script>
-        </div>
+		</div>
 		
     </body>
 </html>
