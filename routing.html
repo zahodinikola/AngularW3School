@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+	
+	</head>
+    <body ng-app="myApp">
+        <div class="container">
+            <h2>AngularJS routing</h2>
+            <br>
+            <p>The <code>ngRoute</code> module helps your application to become a Single Page Application</p>
+            <br>
+            <h3>What is routing in AngularJS ?</h3>
+            <br>
+            <p>If you want to navigate to different pages in your application, but you also want your application to be a SPA (Single Page Application), with no page reloading, you can use <code>ngRoute</code> module</p>
+            <p>The <code>ngRoute</code> module routes your application from page to page without reloading entire application</p>
+            <h3>Example: navigate to red.htm, green.htm and blue.htm</h3>
+            <br>
+            <p><a href="#!/">Main</a></p>
+            <br>
+            <a href="#!red">Red</a>
+            <a href="#!green">Greeh</a>
+            <a href="#!blue">Blue</a>
+
+            <div ng-view></div>
+
+        </div>
+        <script>
+            var app = angular.module('myApp', ['ngRoute']);
+            app.config(function($routeProvider) {
+                $routeProvider
+                .when('/', {
+                    templateUrl: "main.htm"
+                })
+                .when('/red', {
+                    templateUrl: "red.htm"
+                })
+                .when('/green', {
+                    templateUrl: 'green.htm'
+                })
+                .when('/blue', {
+                    templateUrl: "blue.htm"
+                });
+            });
+        </script>
+        
+    </body>
+</html>
