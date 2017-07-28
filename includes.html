@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>AngularJS Includes</h2>
+            <p>With AngularJS you can include HTML content using <strong>ng-include</strong> directive:</p>
+            <pre>
+                &lt;body ng-app=""&gt;
+                    &lt;ng-include="'file.htm'"&gt;
+                &lt;/body&gt;
+            </pre>
+            <div ng-app="myApp" ng-controller="myCtrl"> 
+                <div ng-include="'myTable.htm'"></div>
+            </div>
+
+            <script>
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope, $http) {
+                $http.get("datas.json").then(function (response) {
+                    $scope.names = response.data.records;
+                });
+            });
+            </script>
+            <h3>Include cross domains</h3>
+            <p>By default the <strong>ng-include</strong> directive doesn't allow you to include files fron other domains</p>
+            <p>To include files from another domain you can add a whitelist of legal files and/or domains in the config function of your application</p>
+            <h4 class="bg-warning">Be sure that the server on the destination allows cross domain access</h4>
+
+        </div>
+    </body>
+</html>
