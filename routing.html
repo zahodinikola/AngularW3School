@@ -73,12 +73,30 @@
             <h3>Controller</h3>
             <p>Whith the <code>$routeProvider</code> you can also define a controller for each view</p>
             
-            <p><a href="#!/">Main</a></p>
+            <!-- <p><a href="#!/">Main</a></p>
             <a href="#!london">London</a>
             <a href="#!paris">Paris</a>
             <br>
-            <ng-view></ng-view>
+            <ng-view></ng-view> -->
             <br>
+            <h3>Template</h3>
+            <br>
+            <p>You can also write HTML directly in the <code>template</code> property value and not refer to a page</p>
+            <br>
+             <!-- <p><a href="#!/">Main</a></p>
+            <a href="#!first">First</a>
+            <a href="#!second">Second</a>
+
+            <ng-view></ng-view>  -->
+            <h3>The <code>otherwise</code> method</h3>
+            <p>You can use <code>otherwise</code> method when none of the others gets match</p>
+
+            <p><a href="#!/">Main</a></p>
+            <a href="#!first">One</a>
+            <a href="#!second">Two</a>
+            <a href="#!third">Three</a>
+
+            <div ng-view></div>
 
         </div>
         <!-- <script>
@@ -114,7 +132,7 @@
                 });
             });
         </script> -->
-        <script>
+        <!-- <script>
             var app = angular.module('myApp', ['ngRoute']);
             app.config(function($routeProvider) {
                 $routeProvider
@@ -138,6 +156,39 @@
 
             app.controller('parisCtrl', function($scope) {
                 $scope.msg = "I love Paris";
+            });
+        </script> -->
+        <!-- <script>
+            var app = angular.module('myApp', ['ngRoute']);
+            app.config(function($routeProvider) {
+                $routeProvider
+                .when('/', {
+                    template: "<h3>Routing to <code>template</code> attribute value</h3>"
+                })
+                .when('/first', {
+                    template: "<h3>First</h3>"
+                })
+                .when('/second', {
+                    template: "<h3>Second</h3>"
+                });
+            });
+        </script> -->
+        <script>
+            var app = angular.module('myApp', ['ngRoute']);
+            app.config(function($routeProvider) {
+                $routeProvider
+                .when('/', {
+                    template: "<h3>Routing to <code>template</code> attribute value</h3>"
+                })
+                .when('/first', {
+                    template: "<h3>First</h3>"
+                })
+                .when('/second', {
+                    template: "<h3>Second</h3>"
+                })
+                .otherwise({
+                    template: "<h3>Nothing has been selected</h3>"
+                });
             });
         </script>
 
