@@ -27,16 +27,61 @@
             <p>The <code>ngRoute</code> module routes your application from page to page without reloading entire application</p>
             <h3>Example: navigate to red.htm, green.htm and blue.htm</h3>
             <br>
-            <p><a href="#!/">Main</a></p>
+            <!-- <p><a href="#!/">Main</a></p>
             <br>
             <a href="#!red">Red</a>
             <a href="#!green">Greeh</a>
             <a href="#!blue">Blue</a>
 
-            <div ng-view></div>
+            <div ng-view></div> -->
+
+            <h2>What do i need?</h2>
+            <br>
+            <p>To make your applications ready for routing you must include AngularJS ngRoute module</p>
+            <pre>
+                &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"&gt;&lt;/script&gt;
+            </pre>
+            <p>Then you must add the <code>ngRoute</code> as a dependency in the application module:</p>
+            <pre>
+                var app = angular.module('myApp', ['ngRoute']);
+            </pre>
+            <p>New application has access to the <code>ngRoute</code> module which provides the <code>$routeProvider</code></p>
+            <p>Use the <code>$routeProvider</code> to configure different routes in your application</p>
+            <br>
+            <h3>Where does it go ?</h3>
+            <br>
+            <p>Your application needs a container to put the content provided by the router</p>
+            <p>This container is defined by the <code>ng-view</code> directive</p>
+            <p>There are three different ways to include <code>ng-view</code> directive to your application</p>
+            <pre>
+                &lt;div ng-view&gt;&lt;/div&gt;
+                &lt;ng-view&gt;&lt;/ng-view&gt;
+                &lt;div class="ng-view"&gt;&lt;div&gt;
+            </pre>
+            <p>Application can only have one <code>ng-view</code> directive, and this will be the placeholder for all views provided by the route</p>
+            <h3>$routeProvider</h3>
+            <p>With the <code>$routeProvider</code> you can define what page to display when a user clicks the link</p>
+            <p>Define the <code>$routeProvider</code> using the config method or your application</p>
+            <p>Work registered in the <code>config</code> method will be performed when the application is loading</p>
+
+            <!-- <p><a href="#!/">Main</a></p>
+            <a href="#!london">London</a>
+            <a href="#!paris">Paris</a>
+
+            <ng-view></ng-view> -->
+            <br>
+            <h3>Controller</h3>
+            <p>Whith the <code>$routeProvider</code> you can also define a controller for each view</p>
+            
+            <p><a href="#!/">Main</a></p>
+            <a href="#!london">London</a>
+            <a href="#!paris">Paris</a>
+            <br>
+            <ng-view></ng-view>
+            <br>
 
         </div>
-        <script>
+        <!-- <script>
             var app = angular.module('myApp', ['ngRoute']);
             app.config(function($routeProvider) {
                 $routeProvider
@@ -53,7 +98,48 @@
                     templateUrl: "blue.htm"
                 });
             });
+        </script> -->
+        <!-- <script>
+            var app = angular.module('myApp', ['ngRoute']);
+            app.config(function($routeProvider) {
+                $routeProvider
+                .when('/', {
+                    templateUrl: "main.htm"
+                })
+                .when('/london', {
+                    templateUrl: "london.htm"
+                })
+                .when('/paris', {
+                    templateUrl: "paris.htm"
+                });
+            });
+        </script> -->
+        <script>
+            var app = angular.module('myApp', ['ngRoute']);
+            app.config(function($routeProvider) {
+                $routeProvider
+                .when('/', {
+                    templateUrl: 'main.htn',
+                    
+                })
+                .when('/london', {
+                    templateUrl: 'london.htm',
+                    controller: 'londonCtrl'
+                })
+                .when('/paris', {
+                    templateUrl:  'paris.htm',
+                    controller: 'parisCtrl'
+                });
+            });
+
+            app.controller('londonCtrl', function($scope) {
+                $scope.msg = "I love London";
+            });
+
+            app.controller('parisCtrl', function($scope) {
+                $scope.msg = "I love Paris";
+            });
         </script>
-        
+
     </body>
 </html>
